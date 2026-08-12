@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Pandya | Senior Full-Stack Engineer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #182234;
+            --accent-blue: #38bdf8;
+            --accent-indigo: #818cf8;
+            --accent-emerald: #34d399;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Smooth scrolling with offset margin for sticky navbar */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.25s ease, border-color 0.25s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 9rem 0 5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            scroll-margin-top: 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--accent-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .hero-badge i {
+            font-size: 0.75rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero h2 {
+            font-size: 1.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .hero-bio {
+            max-width: 800px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .contact-item i {
+            color: var(--accent-blue);
+        }
+
+        .contact-item:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: #0f172a;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        /* Section Commons & Scroll Offset for Navbar */
+        section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border-color);
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title i {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 2rem;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .company-name {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .job-period {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-body ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .timeline-body li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+        }
+
+        .timeline-body li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-indigo);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-subtitle {
+            font-size: 0.9rem;
+            color: var(--accent-emerald);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-bullets {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-bullets li {
+            position: relative;
+            padding-left: 1.25rem;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        .project-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-indigo);
+            font-weight: bold;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tech-badge {
+            font-size: 0.75rem;
+            background: rgba(129, 140, 248, 0.1);
+            color: var(--accent-indigo);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Education & Footer */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .edu-school {
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+
+            .timeline-item::before {
+                left: -1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            nav, .btn-group {
+                display: none;
+            }
+            .skill-card, .timeline-item, .project-card, .edu-card {
+                border: 1px solid #ccc;
+                background: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Rahul Pandya</div>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-item">About</a></li>
+                <li><a href="#skills" class="nav-item">Skills</a></li>
+                <li><a href="#experience" class="nav-item">Experience</a></li>
+                <li><a href="#projects" class="nav-item">Projects</a></li>
+                <li><a href="#education" class="nav-item">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container">
+        <section class="hero" id="about">
+            <div class="hero-badge">
+                <i class="fa-solid fa-circle"></i> Available for Senior Engineering Roles
+            </div>
+            <h1>RAHUL PANDYA</h1>
+            <h2>Senior Full-Stack Engineer</h2>
+            
+            <p class="hero-bio">
+                Accomplished Senior Full-Stack Engineer with over 4.5 years of professional expertise engineering, optimizing, and scaling enterprise web applications. Proven track record of taking sole engineering ownership of full system design, relational database layouts, and secure production deployments.
+            </p>
+
+            <div class="contact-bar">
+                <a href="tel:+919586686045" class="contact-item">
+                    <i class="fa-solid fa-phone"></i> +91 9586686045
+                </a>
+                <a href="mailto:rahulpandya961@gmail.com" class="contact-item">
+                    <i class="fa-solid fa-envelope"></i> rahulpandya961@gmail.com
+                </a>
+                <span class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i> Nava Vadaj, Ahmedabad, India
+                </span>
+                <a href="https://github.com/rahulpandya961" target="_blank" class="contact-item">
+                    <i class="fa-brands fa-github"></i> github.com/rahulpandya961
+                </a>
+                <a href="https://linkedin.com/in/pandya-rahul-20757a1b1" target="_blank" class="contact-item">
+                    <i class="fa-brands fa-linkedin"></i> linkedin.com/in/pandya-rahul-20757a1b1
+                </a>
+            </div>
+
+            <div class="btn-group">
+                <a href="mailto:rahulpandya961@gmail.com" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Get In Touch
+                </a>
+                <button onclick="window.print()" class="btn btn-secondary">
+                    <i class="fa-solid fa-download"></i> Save / Print CV
+                </button>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills">
+            <h3 class="section-title">
+                <i class="fa-solid fa-code"></i> Technical Expertise
+            </h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fa-solid fa-layer-group"></i> Core Frameworks
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">Laravel (Advanced MVC)</span>
+                        <span class="tag">WordPress</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fa-solid fa-database"></i> Databases & Caching
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">MySQL</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">Redis (High-Throughput)</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fa-solid fa-cloud"></i> Cloud & Security
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Cloudflare WAF/CDN</span>
+                        <span class="tag">AWS S3</span>
+                        <span class="tag">AWS CloudFront</span>
+                        <span class="tag">Lambda</span>
+                        <span class="tag">CloudWatch</span>
+                        <span class="tag">Serverless</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fa-solid fa-desktop"></i> Full-Stack Interface
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">jQuery</span>
+						<span class="tag">Node.js</span>
+						<span class="tag">Angular.js</span>
+						<span class="tag">WebSockets</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">Ajax</span>
+                        <span class="tag">Blade</span>
+                        <span class="tag">WebSockets</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fa-solid fa-robot"></i> AI Tools & AI Dev
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Sightengine AI</span>
+                        <span class="tag">Cursor</span>
+                        <span class="tag">GitHub Copilot</span>
+                        <span class="tag">Lovable</span>
+                        <span class="tag">ChatGPT</span>
+                        <span class="tag">Claude</span>
+                        <span class="tag">Gemini</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fa-solid fa-plug"></i> Integrations & Workflows
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Stripe API</span>
+                        <span class="tag">Fasto Gateways</span>
+                        <span class="tag">MailChimp API</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Bitbucket</span>
+                        <span class="tag">Jira</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section id="experience">
+            <h3 class="section-title">
+                <i class="fa-solid fa-briefcase"></i> Professional Experience
+            </h3>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="job-title">PHP Developer</div>
+                            <div class="company-name">Myra Technolabs — Ahmedabad, IN</div>
+                        </div>
+                        <div class="job-period">06/2025 – Present</div>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Spearheaded end-to-end software development lifecycles as the lead full-stack developer, executing full software architectural engineering, relational table structures, and automated staging-to-production deployment frameworks.</li>
+                            <li>Directly facilitated tactical Agile/Scrum sprints with overseas clients, mapping abstract business parameters into production-ready roadmap deliverables.</li>
+                            <li>Optimized complex query logic, indexing rules, and server configurations to eliminate application response latency, ensuring stable, clean, and bug-free production lines.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="job-title">PHP Developer</div>
+                            <div class="company-name">Ashapura Softech — Ahmedabad, IN</div>
+                        </div>
+                        <div class="job-period">08/2024 – 04/2025</div>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Architected and refactored highly modular, object-oriented web backends, ensuring robust server runtime executions and clean programmatic boundaries.</li>
+                            <li>Engineered enterprise database topologies across MySQL and SQL Server environments, leveraging advanced index profiles and data views for optimal high-frequency read/write isolation.</li>
+                            <li>Collaborated side-by-side with UI/UX engineers to transform visual layouts into interactive, fluid full-stack views utilizing Blade Templates, custom Bootstrap, and optimized jQuery/Ajax structures.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="job-title">PHP Developer</div>
+                            <div class="company-name">Captus Technologies LLC — Ahmedabad, IN</div>
+                        </div>
+                        <div class="job-period">04/2023 – 07/2024</div>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Led core server service layers and RESTful API integrations, engineering high-efficiency data exchange pathways for flagship full-stack projects like Docklyne.</li>
+                            <li>Participated daily in engineering-led scrum stand-ups to provide precise timelines, systematically clear systemic roadblocks, and synchronize milestones with cross-functional stakeholders.</li>
+                            <li>Conducted formal code reviews, implemented testing guardrails, and orchestrated framework optimizations to maximize execution velocity across core software routes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="job-title">PHP Developer</div>
+                            <div class="company-name">The One Technologies — Ahmedabad, IN</div>
+                        </div>
+                        <div class="job-period">02/2021 – 03/2023</div>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Designed and executed robust application logic patterns for enterprise multi-tiered web apps powered by backend frameworks and server configurations.</li>
+                            <li>Engineered data logic layers and secure authentication interfaces for AkamuWeb and comprehensive Online Quiz Systems, establishing secure schemas and rigorous data sanitization rules.</li>
+                            <li>Enforced clean-code paradigms and maintained optimal codebase configuration using multi-branch Git and SVN version tracking models.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Projects -->
+        <section id="projects">
+            <h3 class="section-title">
+                <i class="fa-solid fa-diagram-project"></i> Featured Deep-Dive Projects
+            </h3>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Public69</div>
+                        <div class="project-subtitle">High-Volume Media Streaming Platform</div>
+                        <ul class="project-bullets">
+                            <li>Architected the absolute backend engine from scratch, optimizing execution flow to manage concurrent media streaming request rushes gracefully.</li>
+                            <li>Engineered flexible and secure REST APIs and integrated comprehensive caching mechanisms alongside Cloudflare CDN caching to minimize global edge latency.</li>
+                            <li>Integrated Sightengine AI API into the upload lifecycle to automate image/video moderation before streaming.</li>
+                            <li>Implemented custom Role-Based Access Control (RBAC) modules alongside secure encryption middleware to guard premium subscription tiers.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">Cloudflare CDN</span>
+                        <span class="tech-badge">Sightengine AI</span>
+                        <span class="tech-badge">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Performance Physiology</div>
+                        <div class="project-subtitle">US Athlete Management System</div>
+                        <ul class="project-bullets">
+                            <li>Designed a structured relational database schema layout supporting a multi-layered nested tenant hierarchy mapping regional districts, schools, teams, coaches, and players.</li>
+                            <li>Implemented strict row-level data isolation policies within database layers to prevent crosstalk between athletic organization rosters.</li>
+                            <li>Created a centralized administrative layout facilitating seamless bulk user onboarding and safe performance stat tracking.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">Multi-Tenancy</span>
+                        <span class="tech-badge">Row Isolation</span>
+                        <span class="tech-badge">Laravel</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Docklyne</div>
+                        <div class="project-subtitle">Maritime Boat Rental Engine</div>
+                        <ul class="project-bullets">
+                            <li>Developed custom booking modules capable of evaluating intricate pricing rules across variable hourly, multi-day, and overnight scheduling slots.</li>
+                            <li>Built an integrated marketplace add-on database schema for water accessories, handling calculations for split-payout workflows, security deposits, and cart summaries.</li>
+                            <li>Integrated automated user identity processing pipelines and boating license checking rules alongside a digital check-in workflow.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">Booking Engine</span>
+                        <span class="tech-badge">Split Payments</span>
+                        <span class="tech-badge">API Integration</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Lawyer Dashboard</div>
+                        <div class="project-subtitle">Legal Service Accounting Console</div>
+                        <ul class="project-bullets">
+                            <li>Designed a dynamic billing dashboard tracking quotation lifecycles from submission stages to active assignments based on client review statuses.</li>
+                            <li>Engineered an automated script pattern auto-generating downstream project tasks and tracking memo numbers upon quote win.</li>
+                            <li>Integrated comprehensive itemized invoice tracing frameworks logging task-specific balances against unique ledgers.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">Accounting Ledger</span>
+                        <span class="tech-badge">Automation Scripts</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">AkamuWeb</div>
+                        <div class="project-subtitle">Recurring Subscription & Billing SaaS Matrix</div>
+                        <ul class="project-bullets">
+                            <li>Built a recurring subscription architecture supporting robust billing frequencies, proration algorithms, and plan upgrades/downgrades.</li>
+                            <li>Integrated payment provider APIs with robust exception handling and fallback webhooks to automatically catch failed recurring payments.</li>
+                            <li>Mapped strict RBAC gate patterns dynamically granting or restricting dashboard page access based on active paid tier status.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Stripe API</span>
+                        <span class="tech-badge">SaaS Billing</span>
+                        <span class="tech-badge">RBAC Gates</span>
+                        <span class="tech-badge">Webhooks</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title">Ausape</div>
+                        <div class="project-subtitle">Multi-Tenant Event Management Console</div>
+                        <ul class="project-bullets">
+                            <li>Developed an organizational hub platform letting corporate administrators build, host, and display group-restricted events with strict viewer tiers.</li>
+                            <li>Integrated MailChimp marketing APIs to fire automated, beautifully styled newsletter templates and event updates to target lists.</li>
+                            <li>Created dynamic frontend layout blocks using Blade and Bootstrap to cleanly list events sorted by context and category.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">MailChimp API</span>
+                        <span class="tech-badge">Blade</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <span class="tech-badge">Multi-Tenant</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h3 class="section-title">
+                <i class="fa-solid fa-graduation-cap"></i> Education
+            </h3>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">Master of Computer Applications (MCA)</div>
+                    <div class="edu-school">GLS University — Ahmedabad, India</div>
+                    <div class="edu-meta">
+                        <span>2019 – 2021</span>
+                        <span><strong>7.5 CPI</strong></span>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
+                    <div class="edu-school">JG College of Computer Application — Ahmedabad, India</div>
+                    <div class="edu-meta">
+                        <span>2016 – 2019</span>
+                        <span><strong>7.5 CPI</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Rahul Pandya. All rights reserved.</p>
+
+        </footer>
+    </div>
+
+    <!-- Active Navigation Highlight & Smooth Scroll Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-item");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === "#" + current) {
+                        link.classList.add("active");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
